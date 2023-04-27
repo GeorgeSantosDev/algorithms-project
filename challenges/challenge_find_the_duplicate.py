@@ -1,26 +1,21 @@
+from challenges.challenge_anagrams import sort_function
+
+
 def find_duplicate(nums):
-    numbers_count = dict()
+    duplicates = set()
 
-    if nums == None:
-        return False
+    sort_function(nums, 0, len(nums))
 
-    for number in nums:
-        if isinstance(number, str) or number < 0:
+    for index in list(range(0, len(nums) - 1)):
+        if isinstance(nums[index], str) or nums[index] < 0:
             return False
-        elif number in numbers_count:
-            numbers_count[number] += 1
-        else:
-            numbers_count[number] = 1
 
-    numbers_count_list = list(numbers_count.items())
+        if nums[index] == nums[index + 1]:
+            duplicates.add(nums[index])
 
-    duplicate_numbers = []
+    duplicate_list = list(duplicates)
 
-    for numb, counter in numbers_count_list:
-        if counter > 1:
-            duplicate_numbers.append(numb)
-
-    if len(duplicate_numbers) == 1:
-        return duplicate_numbers[0]
+    if len(duplicate_list) == 1:
+        return duplicate_list[0]
 
     return False
