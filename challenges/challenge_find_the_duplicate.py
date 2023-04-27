@@ -1,10 +1,7 @@
-from challenges.challenge_anagrams import sort_function
-
-
 def find_duplicate(nums):
     duplicates = set()
 
-    sort_function(nums, 0, len(nums))
+    nums.sort()
 
     for index in list(range(0, len(nums) - 1)):
         if isinstance(nums[index], str) or nums[index] < 0:
